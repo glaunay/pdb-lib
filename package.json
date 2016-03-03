@@ -1,0 +1,16 @@
+{
+  "name": "pdb-lib",
+  "version": "1.0.0",
+  "description": "A library to parse and manipulate pdb coordinates",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js -f test/1Z00.pdb"
+  },
+  "author": "GL",
+  "license": "ISC",
+  "dependencies": {
+    "array-uniq": "^1.0.2",
+    "byline": "^4.2.1",
+    "sprintf-js": "^1.0.3"
+  }
+}
