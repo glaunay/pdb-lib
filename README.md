@@ -1,4 +1,4 @@
-##Another library to parse and manipulate "Protein Data Bank" files...
+##Another library to parse and manipulate "Protein Data Bank" files
 Last revision : GL -- 06042016
 Version tag : 0.2
 
@@ -33,7 +33,7 @@ The inputs must be passed along with key used for source identification. Followi
 The pdbObject interface tries to combine object chaining with "pymol-like" selecting expressions.  A pdbObject implements the following methods.
 
 <br>
-###### $pdbObject$.model(int) 
+###### _pdbObject_.model(int) 
 The mandatory method used to initialize or reset atom selections.
 Assign to the **current selection**, the coordinates model designated by provided number. If the input featured no alternative structure (no "model ID" ), a default "number one" model is created so that `pdbObject.model(1)` will always work.
 The previous **current selection** is effectively erased.
@@ -43,6 +43,8 @@ The previous **current selection** is effectively erased.
 
 
 <br>
+
+
 ###### $pdbObject$.resName(coordinateSelectorExpression) 
  Extract from the **current selection** all atom records with [resName](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
