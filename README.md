@@ -67,7 +67,7 @@ Note: Internally, the pdbObject performs most operations on a record of atoms na
 
 <br>
 
-#### coordinateSelectorExpression definition
+#### coordinateSelectorExpression specifications
 
 The coordinateSelectorExpressions are strings used to generate regular expressions. Theses are used  by the pdbObject  to scan its **current selection** of atom records. The subset of matching records are consequently deleted from the **current section** or used to replace the **current selection**.  
 
