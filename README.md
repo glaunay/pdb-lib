@@ -40,6 +40,8 @@ The previous **current selection** is effectively erased.
 **returns** : the pdbObject
 
 +  Note: Internally, the pdbObject performs most operations on a record of atoms named  **current selection**.  On any fresh pdbObject,  **current selection** _must_ be initialized by calling the model method!
+
+
 <br>
 ###### $pdbObject$.resName(coordinateSelectorExpression) 
  Extract from the **current selection** all atom records with [resName](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
