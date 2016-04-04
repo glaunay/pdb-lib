@@ -18,15 +18,15 @@ Launch test within the test folder
 #### Invoking parser
 `pdbLib.parse({"ValidKey" : input).on('end', callback)`<br>
 Where callback is passed the created **pdbObject** as single parameter.
-The inputs must be passed along with key used for source identification. Following  {$key, input$} pairs are supported:
+The inputs must be passed along with key used for source identification. Following  {key, input} pairs are supported:
 
-*   **file**,  File formated to the [PDB](http://www.rcsb.org/format) standard
-* **rStream**, a node readable stream
+*   **file** :  path to a file following the [PDB](http://www.rcsb.org/format) standard
+* **rStream** :  a reference to a node readable stream
 
 ##### Parsing example
->pdbLib.parse({file : "./test/1Z00.pdb"})
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.on("end", function(pdbObjInp){
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pdbObject = pdbObjInp;
+>pdbLib.parse({file : "./test/1Z00.pdb"})<br>
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.on("end", function(pdbObjInp){<br>
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pdbObject = pdbObjInp;<br>
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
 
 #### Manipulating coordinates
