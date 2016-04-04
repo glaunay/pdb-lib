@@ -72,7 +72,7 @@ Note: Internally, the pdbObject performs most operations on a record of atoms na
 The coordinateSelectorExpressions are strings used to generate regular expressions. Theses are used  by the pdbObject  to scan its **current selection** of atom records. The subset of matching records are consequently deleted from the **current section** or used to replace the **current selection**.  
 
 #####  Variable type
-_coordinateSelectorExpression_ are passed to a $pdbObject$ method  as single or multiple arguments. In the latter case,  the **OR**-logic is employed.
+_coordinateSelectorExpression_ are passed to a _pdbObject_ method  as single or multiple arguments. In the latter case,  the **OR**-logic is employed.
 
 *   Select all Lys, Leu, Asp, Asn, Arg : `pdbObj.resName('L*','A*')`
 
