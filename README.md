@@ -1,4 +1,4 @@
-##Another library to parse and manipulate "Protein Data Bank" files
+##Another library to parse and manipulate "Protein Data Bank" files...
 Last revision : GL -- 06042016
 Version tag : 0.2
 
