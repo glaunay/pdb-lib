@@ -20,7 +20,7 @@ Launch test within the test folder
 Where callback is passed the created **pdbObject** as single parameter.
 The inputs must be passed along with key used for source identification. Following  {key, input} pairs are supported:
 
-*   **file** :  path to a file following the [PDB](http://www.rcsb.org/format) standard
+*   **file** :  path to a file following the [PDB](http://www.wwpdb.org/documentation/file-format) standard
 * **rStream** :  a reference to a node readable stream
 
 ##### Parsing example
@@ -44,25 +44,25 @@ Note: Internally, the pdbObject performs most operations on a record of atoms na
 <br>
 
 ###### pdbObject.resName(coordinateSelectorExpression) 
- Extract from the **current selection** all atom records with [resName](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
+ Extract from the **current selection** all atom records with [resName](http://www.wwpdb.org/documentation/file-format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
 <br>
 
 ######  pdbObject.resSeq(coordinateSelectorExpression)
- Extract from the **current selection** all atom records with [resSeq](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
+ Extract from the **current selection** all atom records with [resSeq](http://www.wwpdb.org/documentation/file-format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
 <br>
 
 ######  pdbObject.name(coordinateSelectorExpression)
- Extract from the **current selection** all atom records with [name](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
+ Extract from the **current selection** all atom records with [name](http://www.wwpdb.org/documentation/file-format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
 <br>
 
 ######  pdbObject.chain(coordinateSelectorExpression)
- Extract from the **current selection** all atom records with [segID](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
+ Extract from the **current selection** all atom records with [segID](http://www.wwpdb.org/documentation/file-format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
 <br>
@@ -100,25 +100,25 @@ The same logic is employed to delete atom selections. Selecting atoms based on a
 <br>
 
 ###### pdbObject.resNameDel(coordinateSelectorExpression) 
- Delete from the **current selection** all atom records with [resName](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
+ Delete from the **current selection** all atom records with [resName](http://www.wwpdb.org/documentation/file-format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
 <br>
 
 ######  pdbObject.resSeqDel(coordinateSelectorExpression)
- Delete from the **current selection** all atom records with [resSeq](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
+ Delete from the **current selection** all atom records with [resSeq](http://www.wwpdb.org/documentation/file-format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
 <br>
 
 ######  pdbObject.nameDel(coordinateSelectorExpression)
- Delete from the **current selection** all atom records with [name](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
+ Delete from the **current selection** all atom records with [name](http://www.wwpdb.org/documentation/file-format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
 <br>
 
 ######  pdbObject.chainDel(coordinateSelectorExpression)
- Delete from the **current selection** all atom records with [segID](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
+ Delete from the **current selection** all atom records with [segID](http://www.wwpdb.org/documentation/file-format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
 <br>
