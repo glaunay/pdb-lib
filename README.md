@@ -33,7 +33,7 @@ The inputs must be passed along with key used for source identification. Followi
 The pdbObject interface tries to combine object chaining with "pymol-like" selecting expressions.  A pdbObject implements the following methods.
 
 <br>
-###### _pdbObject_.model(int) 
+###### pdbObject.model(int) 
 The mandatory method used to initialize or reset atom selections.
 Assign to the **current selection**, the coordinates model designated by provided number. If the input featured no alternative structure (no "model ID" ), a default "number one" model is created so that `pdbObject.model(1)` will always work.
 The previous **current selection** is effectively erased.
