@@ -59,18 +59,43 @@ var PdbObject  = function(data) {
     this.coordinates = null;
     this.currentSelection = [];
 
+    // TO DO DEVELOP high level selection parser
+    this.remove = function(expression) {
+        return this;
+    };
+    this.select = function(expression) {
+        return this;
+    };
 
+
+// Set B-factor of current selection
     this.bFactor = function(value, type) { // assign or read bFactor value to/from current selection
         this.coordinates.bFactor(this.currentSelection, value, type);
     };
 
+// Number of atoms in current selection
     this.selecSize = function() {
         return this.currentSelection.length;
     };
+// non-redundant list of chains found in currentSelection
     this.listChainID = function() {
         var chainList = this.coordinates.listChainID(this.currentSelection);
         return chainList
     }
+
+// Initialize/ reset selection
+    this.model = function(string) {
+        this.currentSelection = this.coordinates.model(string);
+        return this;
+    },
+
+// Selector short-cut
+    this.naturalAminoAcidOnly = function() {
+        var self = this.resName.apply(this, naturals);
+        return self;
+    };
+
+// Basic Selectors
     this.chain = function () { // could receive an array as sole argument
         var nArgs = [this.currentSelection];
 
@@ -86,23 +111,7 @@ var PdbObject  = function(data) {
         this.currentSelection = this.coordinates.chain.apply(this.coordinates, nArgs);
         return this;
     };
-    this.naturalAminoAcidOnly = function() {
-        var self = this.resName.apply(this, naturals);
-        return self;
-    };
-    this.remove = function(opt) {
-        //this.coordinates.verbose = true;
-        if ('resSeq' in opt) {
-            this.currentSelection = this.coordinates.delResSeq(this.currentSelection, arrayCoherce(opt.resSeq))
-        }
-        if ('resName' in opt) {
-          this.currentSelection = this.coordinates.delResName(this.currentSelection, arrayCoherce(opt.resName))
-        }
-        if ('name' in opt) {
-           this.currentSelection = this.coordinates.delName(this.currentSelection, arrayCoherce(opt.name))
-        }
-        return this;
-    };
+
     this.name = function (args) {
         var nArgs = [this.currentSelection];
         for (var i = 0; i < arguments.length ; i++) {
@@ -111,16 +120,16 @@ var PdbObject  = function(data) {
         this.currentSelection = this.coordinates.name.apply(this.coordinates, nArgs);
         return this;
     };
+
     this.resSeq = function (args) {
-        //console.log(arguments);
         var nArgs = [this.currentSelection];
         for (var i = 0; i < arguments.length ; i++) {
-            //console.log("==>" + arguments[i]);
             nArgs.push(arguments[i]);
         }
         this.currentSelection = this.coordinates.resSeq.apply(this.coordinates, nArgs);
         return this;
     };
+
     this.resName = function (args) {
         var nArgs = [this.currentSelection];
         for (var i = 0; i < arguments.length ; i++) {
@@ -129,21 +138,82 @@ var PdbObject  = function(data) {
         this.currentSelection = this.coordinates.resName.apply(this.coordinates, nArgs);
         return this;
     };
-    this.model = function(string) {
-        this.currentSelection = this.coordinates.model(string);
-        //console.log("model: currentSelectionSize " + this.currentSelection.length);
+
+// Deleters
+    this.chainDel = function () {
+        var nArgs = [this.currentSelection];
+
+        if(Array.isArray(arguments[0])) {
+            arguments[0].forEach(function(e){
+                nArgs.push(e);
+            });
+        } else {
+            for (var i = 0; i < arguments.length ; i++) {
+                nArgs.push(arguments[i]);
+            }
+        }
+        this.currentSelection = this.coordinates.delChain.apply(this.coordinates, nArgs)
         return this;
-    },
-    // Clone selection into a new pdb object and set currentSelection to total atomRecord
+    };
+
+    this.nameDel = function () {
+        var nArgs = [this.currentSelection];
+
+        if(Array.isArray(arguments[0])) {
+            arguments[0].forEach(function(e){
+                nArgs.push(e);
+            });
+        } else {
+            for (var i = 0; i < arguments.length ; i++) {
+                nArgs.push(arguments[i]);
+            }
+        }
+        this.currentSelection = this.coordinates.delName.apply(this.coordinates, nArgs)
+        return this;
+    };
+
+    this.resNameDel = function () {
+        var nArgs = [this.currentSelection];
+
+        if(Array.isArray(arguments[0])) {
+            arguments[0].forEach(function(e){
+                nArgs.push(e);
+            });
+        } else {
+            for (var i = 0; i < arguments.length ; i++) {
+                nArgs.push(arguments[i]);
+            }
+        }
+        this.currentSelection = this.coordinates.delResName.apply(this.coordinates, nArgs)
+        return this;
+    };
+
+    this.resSeqDel = function () {
+        var nArgs = [this.currentSelection];
+
+        if(Array.isArray(arguments[0])) {
+            arguments[0].forEach(function(e){
+                nArgs.push(e);
+            });
+        } else {
+            for (var i = 0; i < arguments.length ; i++) {
+                nArgs.push(arguments[i]);
+            }
+        }
+        this.currentSelection = this.coordinates.delResSeq.apply(this.coordinates, nArgs)
+        return this;
+    };
+
+
+// Clone selection into a new pdb object and set currentSelection to total atomRecord
     this.pull = function() {
         var pdbObject = new PdbObject();
-        //console.log("-->neo constructed currentSelection size : " + pdbObject.currentSelection.length);
-        //console.log("input currentSelection to pull size " + this.currentSelection.length);
         pdbObject.coordinates = coordinates.clone(this.currentSelection);
         pdbObject.model().name('*');
-        //console.log("-->pulled currentSelection size : " + pdbObject.currentSelection.length);
         return pdbObject;
     }
+
+// Display current Selection
     this.dump = function () {
         if (this.currentSelection.length === 0) {
             console.log("Empty atom selection !");
@@ -157,7 +227,7 @@ var PdbObject  = function(data) {
     }
 }
 
-
+// Parsing Routines
 var setBuffer = function(line, buffers) {
     var m = line.match(re);
     if (!m){
@@ -171,8 +241,7 @@ var setBuffer = function(line, buffers) {
         return buffers[k].data;
     }
     return null;
-}
-
+};
 
 var parse = function(opt) {
         if (!opt) throw "No input specified";
@@ -225,15 +294,8 @@ module.exports = {
 }
 
 
-/* */
+/* Test -- Case */
 process.argv.forEach(function (val, index, array){
     if (val === '-f')
         var pdbObj = parse({'file' : array[index + 1] });
-/*    if (val === '--slurm') slurm = true;
-    if (val === '--http') bHttp = true;
-    if (val === '--conf') {
-        if (! array[index + 1])
-            throw("usage : ");
-        bean = parseConfig(array[index + 1]);
-    }*/
 });
