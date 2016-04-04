@@ -65,6 +65,7 @@ Note: Internally, the pdbObject performs most operations on a record of atoms na
  Extract from the **current selection** all atom records with [segID](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
+<br>
 
 #### coordinateSelectorExpression definition
 
@@ -120,12 +121,14 @@ The same logic is employed to delete atom selections. Selecting atoms based on a
  Delete from the **current selection** all atom records with [segID](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
+<br>
+
 #### Coordinates manipulation exemples
 
 *  Delete atoms from the chain B, then remove two fragments
 `pdbObj.model(1).chainDel('B').resSeqDel("290:301","270:277")`
 
-
+<br>
 
 #### Additional methods
 
