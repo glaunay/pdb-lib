@@ -45,19 +45,19 @@ Note: Internally, the pdbObject performs most operations on a record of atoms na
 <br>
 
 
-###### $pdbObject$.resName(coordinateSelectorExpression) 
+###### pdbObject.resName(coordinateSelectorExpression) 
  Extract from the **current selection** all atom records with [resName](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 <br>
-######  $pdbObject$.resSeq(coordinateSelectorExpression)
+######  pdbObject.resSeq(coordinateSelectorExpression)
  Extract from the **current selection** all atom records with [resSeq](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 <br>
-######  $pdbObject$.name(coordinateSelectorExpression)
+######  pdbObject.name(coordinateSelectorExpression)
  Extract from the **current selection** all atom records with [name](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 <br>
-######  $pdbObject$.chain(coordinateSelectorExpression)
+######  pdbObject.chain(coordinateSelectorExpression)
  Extract from the **current selection** all atom records with [segID](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
@@ -87,19 +87,19 @@ Interval of values can be specified for [serial]() and [resSeq]() fields. Omit o
 #### Deleting specific atoms
 The same logic is employed to delete atom selections. Selecting atoms based on atom attributes is achieved through similar methods suffixed with the **Del** string.
 <br>
-###### $pdbObject$.resNameDel(coordinateSelectorExpression) 
+###### pdbObject.resNameDel(coordinateSelectorExpression) 
  Delete from the **current selection** all atom records with [resName](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 <br>
-######  $pdbObject$.resSeqDel(coordinateSelectorExpression)
+######  pdbObject.resSeqDel(coordinateSelectorExpression)
  Delete from the **current selection** all atom records with [resSeq](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 <br>
-######  $pdbObject$.nameDel(coordinateSelectorExpression)
+######  pdbObject.nameDel(coordinateSelectorExpression)
  Delete from the **current selection** all atom records with [name](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 <br>
-######  $pdbObject$.chainDel(coordinateSelectorExpression)
+######  pdbObject.chainDel(coordinateSelectorExpression)
  Delete from the **current selection** all atom records with [segID](http://rcsb.org/format) field matching the provided coordinateSelectorExpression.
 **returns**: the pdbObject
 
@@ -112,18 +112,18 @@ The same logic is employed to delete atom selections. Selecting atoms based on a
 
 #### Additional methods
 
-######  $pdbObject$.naturalAminoAcidOnly()
+######  pdbObject.naturalAminoAcidOnly()
 A short-cut method to select only the atoms part of the 20 natural amino-acids.
 **returns**: the pdbObject
 <br>
-######  $pdbObject$.bFactor(value, [Optional type="increment"])
+######  pdbObject.bFactor(value, [Optional type="increment"])
 Update the bFactor fields of the **current selection** of atoms to specified value. By default, any previous value is erased. If the optional parameter is set to _"increment"_, the current bFactor values are incremented of _value_.
 **returns**: null
 <br>
-######  $pdbObject$.selecSize()
+######  pdbObject.selecSize()
 Compute the size of the **current selection** of atoms
 **returns**:  **current selection** array length
 <br>
-######  $pdbObject$.listChainID()
+######  pdbObject.listChainID()
 Extract from current selection a list of non-redundant chain identifiers.
 **returns** : Array of single characters
