@@ -16,7 +16,7 @@ Launch test within the test folder
 #### Loading library
 `var pdbLib = require("pdb-lib")`
 #### Invoking parser
-`pdbLib.parse({"ValidKey" : input).on('end', callback)`
+`pdbLib.parse({"ValidKey" : input).on('end', callback)`<br>
 Where callback is passed the created **pdbObject** as single parameter.
 The inputs must be passed along with key used for source identification. Following  {$key, input$} pairs are supported:
 
