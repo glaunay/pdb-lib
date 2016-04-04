@@ -39,7 +39,7 @@ Assign to the **current selection**, the coordinates model designated by provide
 The previous **current selection** is effectively erased.
 **returns** : the pdbObject
 
-+  Note: Internally, the pdbObject performs most operations on a record of atoms named  **current selection**.  On any fresh pdbObject,  **current selection** _must_ be initialized by calling the model method!
+Note: Internally, the pdbObject performs most operations on a record of atoms named  **current selection**.  On any fresh pdbObject,  **current selection** _must_ be initialized by calling the model method!
 
 
 <br>
