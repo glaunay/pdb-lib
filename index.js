@@ -26,7 +26,7 @@ var fs = require('fs'),
 var preambule = require('./lib/preambule.js');
 var coordinates = require('./lib/coordinates.js');
 var seqres = require('./lib/seqres.js');
-
+//var _ = require('underscore');
 
 var re = /^([\S]+)/;
 
@@ -213,6 +213,48 @@ var PdbObject  = function(data) {
         return pdbObject;
     }
 
+    this.pdbnum = function  () {
+        if (this.currentSelection.length === 0) {
+            console.log("Empty atom selection !");
+            return null;
+        }
+        var numSequence = [];
+        var warden = null;
+        this.currentSelection.forEach(function(e, i, array){
+            if (!warden) {
+                warden = e.pdbNum();
+                numSequence.push(warden);
+                return;
+            }
+
+            if (warden === e.pdbNum())
+                return;
+
+            numSequence.push(e.pdbNum());
+            warden = e.pdbNum();
+        });
+        return numSequence;
+    }
+
+    this.sequence = function () {
+        if (this.currentSelection.length === 0) {
+            console.log("Empty atom selection !");
+            return null;
+        }
+        var string = '';
+        var warden = null;
+        this.currentSelection.forEach(function(e, i, array){
+            if (!warden)
+                warden = e.pdbNum();
+            else if (warden === e.pdbNum())
+                return;
+
+            string += e.oneLetter();
+            warden = e.pdbNum();
+        });
+        return string;
+    }
+
 // Display current Selection
     this.dump = function () {
         if (this.currentSelection.length === 0) {
@@ -225,6 +267,30 @@ var PdbObject  = function(data) {
         });
         return string;
     }
+
+    this.asArray = function () {
+        if (this.currentSelection.length === 0) {
+            console.log("Empty atom selection !");
+            return null;
+        }
+        var array = [coordinates.atomFields];
+        this.currentSelection.forEach(function(e) {
+                    array.push(e.asArray());
+                });
+        return array;
+    }
+    this.asFasta = function () {
+        if (this.currentSelection.length === 0) {
+            console.log("Empty atom selection !");
+            return null;
+        }
+        var array = [coordinates.atomFields];
+        this.currentSelection.forEach(function(e) {
+                    array.push(e.asArray());
+                });
+        return array;
+    }
+
 }
 
 // Parsing Routines
