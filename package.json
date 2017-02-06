@@ -1,12 +1,12 @@
 {
   "name": "pdb-lib",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A library to parse and manipulate pdb coordinates",
   "main": "index.js",
   "scripts": {
     "test": "node test/test.js -f test/1Z00.pdb"
   },
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "git://github.com/glaunay/pdb-lib.git"
   },
@@ -17,7 +17,7 @@
     "byline": "^4.2.1",
     "sprintf-js": "^1.0.3"
   },
-  "bugs" : {
-	"url": "https://github.com/glaunay/pdb-lib/issues"
+  "bugs": {
+    "url": "https://github.com/glaunay/pdb-lib/issues"
   }
 }
