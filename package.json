@@ -1,6 +1,6 @@
 {
   "name": "pdb-lib",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A library to parse and manipulate pdb coordinates",
   "main": "index.js",
   "scripts": {
