@@ -255,16 +255,29 @@ var PdbObject  = function(data) {
         return string;
     }
 
-// Display current Selection
-    this.dump = function () {
+// Display current Selection optional number of field (columns)
+    this.dump = function (nField) {
         if (this.currentSelection.length === 0) {
             console.log("Empty atom selection !");
             return null;
         }
         var string = '';
-        this.currentSelection.forEach(function(e, i, array){
-            string += e.stringify();
-        });
+        if (!nField) {
+            this.currentSelection.forEach(function(e, i, array){
+                string += e.stringify();
+            });
+        } else {
+            var n = parseInt(nField);
+            if (n < 0) {
+                throw "irregular field number \"" + n + "\"";
+            }
+            this.currentSelection.forEach(function(e, i, array){
+                string += e.stringify().substring(0,n);
+                if( !string.endsWith("\n") )
+                    string += '\n';
+            });
+        }
+
         return string;
     }
 
