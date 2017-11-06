@@ -20,6 +20,7 @@ var naturals = ['ALA', 'ASP', 'ARG', 'ASN', 'CYS',
                 'VAL'];
 
 var events = require('events');
+var stream = require('stream');
 var fs = require('fs'),
     byline = require('byline');
 
@@ -279,6 +280,20 @@ var PdbObject  = function(data) {
         }
 
         return string;
+    }
+
+    // create a stream with the PdbObject into a JSON or not
+    this.stream = function (b_jsonFormat = false, name = 'pdb') {
+        var s = new stream.Readable();
+        if (b_jsonFormat) {
+            s.push('{ "' + name + '" : "');
+            s.push(this.model(1).dump().replace(/\n/g, '\\n').replace(/\r/g, '\\r'));
+            s.push('"}');
+        } else {
+            s.push(this.model(1).dump());
+        }
+        s.push(null);
+        return s;
     }
 
     this.asArray = function () {
